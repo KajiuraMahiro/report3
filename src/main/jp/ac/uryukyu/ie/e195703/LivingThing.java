@@ -1,31 +1,63 @@
 package jp.ac.uryukyu.ie.e195703;
-
 public class LivingThing {
-    String name;
-    int hitPoint;
-    int attack;
-    boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
-    public LivingThing (String name, int hitPoint, int attack){
+
+
+    LivingThing(String name, int hitPoint, int attack){
         this.name = name;
         this.hitPoint = hitPoint;
         this.attack = attack;
+    }
+
+    LivingThing(){
 
     }
-    public boolean isDead(){
-        return  dead;
+
+
+
+    public boolean isDead() {
+        return dead;
     }
 
     public String getName(){
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHitPoint() {
+        return hitPoint;
+    }
+
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
     public void attack(LivingThing opponent){
-        if(isDead() == true)
-            return;
-        int damage = (int)(Math.random() * attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
-        opponent.wounded(damage);
+        if(!dead){
+            int damage = (int)(Math.random() * attack);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
+            opponent.wounded(damage);
+        }
+
     }
 
     public void wounded(int damage){
@@ -36,6 +68,4 @@ public class LivingThing {
         }
     }
 
-
-
-    }
+}
